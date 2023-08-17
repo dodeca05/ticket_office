@@ -1,6 +1,9 @@
 package com.dodeca.quantTicketManager.controller;
 
 import com.dodeca.quantTicketManager.database.dto.DomainDTO;
+import com.dodeca.quantTicketManager.database.entity.DomainEntity;
+import com.dodeca.quantTicketManager.service.DomainService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -8,16 +11,17 @@ import java.util.List;
 
 @RestController
 public class DomainController {
+    @Autowired
+    DomainService domainService;
     @PostMapping("/domain")
     public DomainDTO createDomain(@RequestBody DomainDTO domainDTO)
     {
         return domainDTO;
     }
     @GetMapping("/domain")
-    public List<DomainDTO> readAllDomain()
+    public List<DomainEntity> readAllDomain()
     {
-        List<DomainDTO> result=new ArrayList<>();
-        return result;
+        return domainService.getAllDomain();
     }
 
     @GetMapping("/domain/{domain}")
