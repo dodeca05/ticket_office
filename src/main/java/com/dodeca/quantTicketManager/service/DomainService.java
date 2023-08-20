@@ -17,6 +17,10 @@ public class DomainService {
     {
         return domainRepository.findAll();
     }
+    public DomainEntity getDomain(String name)
+    {
+        return domainRepository.findByName(name).get(0);
+    }
     public DomainEntity createDomain(DomainDTO domainDTO)
     {
         List<DomainEntity> domainEntityList=domainRepository.findByName(domainDTO.getName());

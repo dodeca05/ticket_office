@@ -6,7 +6,6 @@ import com.dodeca.quantTicketManager.service.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -16,7 +15,6 @@ public class DomainController {
     @PostMapping("/domain")
     public DomainEntity createDomain(@RequestBody DomainDTO domainDTO)
     {
-
         return domainService.createDomain(domainDTO);
     }
     @GetMapping("/domain")
@@ -26,23 +24,20 @@ public class DomainController {
     }
 
     @GetMapping("/domain/{domain}")
-    public String readDomain(@PathVariable String domain)
+    public DomainEntity readDomain(@PathVariable String domain)
     {
-
-        return domain;
+        return domainService.getDomain(domain);
     }
 
     @GetMapping("/domain/{domain}/ticket")
     public String readDomainTicket(@PathVariable String domain)
     {
-
-        return domain;
+        return domainService.getDomain(domain).getTicket();
     }
 
     @DeleteMapping("/domain/{domain}")
     public String removeDomain(@PathVariable String domain)
     {
-
         return domain;
     }
 
