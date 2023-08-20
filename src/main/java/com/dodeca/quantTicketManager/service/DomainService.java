@@ -21,6 +21,10 @@ public class DomainService {
     {
         return domainRepository.findByName(name).get(0);
     }
+    public void deleteDomain(String name)
+    {
+        domainRepository.delete(domainRepository.findByName(name).get(0));
+    }
     public DomainEntity createDomain(DomainDTO domainDTO)
     {
         List<DomainEntity> domainEntityList=domainRepository.findByName(domainDTO.getName());
