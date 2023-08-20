@@ -14,9 +14,10 @@ public class DomainController {
     @Autowired
     DomainService domainService;
     @PostMapping("/domain")
-    public DomainDTO createDomain(@RequestBody DomainDTO domainDTO)
+    public DomainEntity createDomain(@RequestBody DomainDTO domainDTO)
     {
-        return domainDTO;
+
+        return domainService.createDomain(domainDTO);
     }
     @GetMapping("/domain")
     public List<DomainEntity> readAllDomain()
