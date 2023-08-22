@@ -1,6 +1,7 @@
 package com.dodeca.quantTicketManager.service;
 
 import com.dodeca.quantTicketManager.database.dto.DomainDTO;
+import com.dodeca.quantTicketManager.database.dto.DomainEditDTO;
 import com.dodeca.quantTicketManager.database.entity.DomainEntity;
 import com.dodeca.quantTicketManager.database.repository.DomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,14 @@ public class DomainService {
     public void deleteDomain(String name)
     {
         domainRepository.delete(domainRepository.findByName(name).get(0));
+    }
+    public DomainEntity editDomain(DomainEditDTO domainEditDTO){
+        List<DomainEntity> domainEntityList=domainRepository.findByName(domainEditDTO.getName());
+        DomainEntity domainEntity=domainEntityList.get(0);
+        domainEntity.setDescription(domainEditDTO.getDescription());
+        domainRepository.save(domainEntity);
+        return domainEntity;
+
     }
     public DomainEntity createDomain(DomainDTO domainDTO)
     {

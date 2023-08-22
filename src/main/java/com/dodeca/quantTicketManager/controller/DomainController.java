@@ -1,6 +1,7 @@
 package com.dodeca.quantTicketManager.controller;
 
 import com.dodeca.quantTicketManager.database.dto.DomainDTO;
+import com.dodeca.quantTicketManager.database.dto.DomainEditDTO;
 import com.dodeca.quantTicketManager.database.entity.DomainEntity;
 import com.dodeca.quantTicketManager.service.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class DomainController {
     public DomainEntity readDomain(@PathVariable String domain)
     {
         return domainService.getDomain(domain);
+    }
+    @PatchMapping("/domain/{domain}")
+    public DomainEntity editDomain(@RequestBody DomainEditDTO domainEditDTO)
+    {
+        return domainService.editDomain(domainEditDTO);
     }
 
     @GetMapping("/domain/{domain}/ticket")
