@@ -20,9 +20,16 @@ public class DomainController {
         return domainService.createDomain(domainDTO);
     }
     @GetMapping("/domain")
-    public List<DomainEntity> readAllDomain()
+    public List<DomainEntity> readAllDomain(@RequestParam(name = "type", required = false) String typeParam,
+                                            @RequestParam(name = "ticket", required = false) String ticketParam)
     {
-        return domainService.getAllDomain();
+        if(typeParam==null && ticketParam==null)
+            return domainService.getAllDomain();
+        if(typeParam!=null && ticketParam==null)
+            return domainService.getDomainsByType(typeParam);
+        if(typeParam==null && ticketParam!=null)
+            return domainService.getDomainsByTicket(ticketParam);
+        return domainService.getDomainsByTypeAndTicket(ticketParam,typeParam);
     }
 
     @GetMapping("/domain/{domain}")

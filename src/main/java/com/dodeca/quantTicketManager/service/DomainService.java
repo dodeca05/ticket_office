@@ -18,6 +18,19 @@ public class DomainService {
     {
         return domainRepository.findAll();
     }
+
+    public List<DomainEntity> getDomainsByTicket(String ticket)
+    {
+        return  domainRepository.findByTicket(ticket);
+    }
+    public List<DomainEntity> getDomainsByType(String type)
+    {
+        return  domainRepository.findByType(type);
+    }
+    public List<DomainEntity>getDomainsByTypeAndTicket(String ticket,String type)
+    {
+        return domainRepository.findByTicketAndType(ticket,type);
+    }
     public DomainEntity getDomain(String name)
     {
         return domainRepository.findByName(name).get(0);
