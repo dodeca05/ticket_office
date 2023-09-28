@@ -16,6 +16,6 @@ public class MemberApiController {
     @PostMapping("/user")
     public String singup(AddMemberRequestDTO requestDTO){
         memberService.save(requestDTO);
-        return"DONE";
+        return "redirect:/login";
     }
 }

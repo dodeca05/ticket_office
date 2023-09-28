@@ -33,4 +33,6 @@ public class WebController {
 
     @GetMapping("/signup")
     public String signup(){return "signup";}
+    @GetMapping("/")
+    public String mainPage(){return "redirect:/web/main";}
 }
